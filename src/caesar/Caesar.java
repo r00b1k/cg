@@ -27,7 +27,7 @@ public final class Caesar {
             put("P",3.1671);
             put("Q",0.1962);
             put("R",7.5809);
-        };
+        }
 
     };
     public static final ArrayList<String> MOST_USED_LETTERS;
@@ -49,7 +49,7 @@ public final class Caesar {
             add("p");
         }};
     }
-    public static final int CASE_DIFF = 32;
+
     public static String encrypt(String source, int key){
         StringBuilder builder = new StringBuilder(source.length());
         for (int i = 0; i < source.length(); i++) {
