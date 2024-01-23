@@ -43,11 +43,7 @@ public class Main {
             System.exit(1);
         }
 
-        Caesar.hackEncryptedTextStatistics("""
-                In this mode, the program must crack the ciphertext contained in an input text file.
-                If the user selects brute force, then the program must independently enumerate the possible keys, select the correct key, and decrypt the text.
-                Think about what criteria the program should use to successfully identify the correct key. You may need to pay attention to the spaces between words or the correct use of punctuation marks.
-                """);
+
 
 
     }
