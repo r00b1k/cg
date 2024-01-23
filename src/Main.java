@@ -1,0 +1,68 @@
+import caesar.Caesar;
+
+import java.sql.SQLOutput;
+
+public class Main {
+    public static void main(String[] args) {
+
+        if (args.length > 1){
+            switch (args[0]){
+                case "-e" ->{
+                    System.out.println(args.length);
+                    if (args.length!=3){
+                        Main.help();
+                        System.exit(1);
+                    }
+                    int key = Integer.parseInt(args[1]);
+                    String textToEncode = args[2];
+                    System.out.println(Caesar.encrypt(textToEncode,key));
+                    return;
+                }
+                case "-d" ->{
+                    if (args.length!=3){
+                        Main.help();
+                        System.exit(1);
+                    }
+                    int key = Integer.parseInt(args[1]);
+                    String textToDecode = args[2];
+                    System.out.println(Caesar.decrypt(textToDecode,key));
+                    return;
+                }
+                case "-bf" ->{
+                    if (args.length!=2 ){
+                        Main.help();
+                        System.exit(1);
+                    }
+                    Caesar.hackEncryptedTextBruteForce(args[1]);
+                    return;
+                }
+                default -> Main.help();
+            }
+        }{
+            Main.help();
+            System.exit(1);
+        }
+
+        Caesar.hackEncryptedTextStatistics("""
+                In this mode, the program must crack the ciphertext contained in an input text file.
+                If the user selects brute force, then the program must independently enumerate the possible keys, select the correct key, and decrypt the text.
+                Think about what criteria the program should use to successfully identify the correct key. You may need to pay attention to the spaces between words or the correct use of punctuation marks.
+                """);
+
+
+    }
+
+    private static void help() {
+        System.out.printf("""
+                USAGE: %s [-param value]
+                Parameters:
+                -e - Encode mode. Specify key and text to encrypt enclosed in "";
+                -d - Decode mode. Specify key and text to decrypt enclosed in "";
+                -bf -Decode mode with bruteforce. Specify text encoded in "";
+                Example: %s -e 3 "Hello world!"
+                """, Main.class.getSimpleName(),Main.class.getSimpleName());
+        System.exit(1);
+
+    }
+
+}
